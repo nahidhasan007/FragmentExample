@@ -25,8 +25,8 @@ class Fragment2 : Fragment(R.layout.fragment2){
         val rootView = layoutInflater.inflate(R.layout.fragment2,container,false)
         var inputText = arguments?.getString("Input_text")
         //val outText = rootView.findViewById<TextView>(R.id.textView)
-        val btn2 = rootView.findViewById<Button>(R.id.fragment2btn)
-        btn2.setOnClickListener(){ replaceFragment(Fragment2())}
+       // val btn2 = rootView.findViewById<Button>(R.id.fragment2btn)
+       // btn2.setOnClickListener(){ replaceFragment(Fragment2())}
         //val btn = rootView.findViewById<Button>(R.id.inputText)
         val input = inputText
         /*btn2.setOnClickListener(){
@@ -58,7 +58,8 @@ class Fragment2 : Fragment(R.layout.fragment2){
         contact.add(ContactInfo(R.drawable.sharetrip3,"Save more on international flight bookings!","Back from a 1000+ hotels and resorts right from our app","23 Nov'22"))
         contact.add(ContactInfo(R.drawable.sharetrip3,"Save more on international flight bookings!","Back from a 1000+ hotels and resorts right from our app","23 Nov'22"))
         contact.add(ContactInfo(R.drawable.sharetrip3,"Save more on international flight bookings!","Back from a 1000+ hotels and resorts right from our app","23 Nov'22"))
-
+        val mLayoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.layoutManager = mLayoutManager
         recyclerView.adapter = Adapter(contact)
         super.onResume()
         (requireActivity() as MainActivity).supportActionBar?.title = input
