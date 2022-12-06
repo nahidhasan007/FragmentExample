@@ -1,21 +1,24 @@
 package com.example.fragmentexample
 
+import android.icu.text.Transliterator
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class Adapter(private val dataset:ArrayList<ContactInfo>):RecyclerView.Adapter<Adapter.ViewHolder>(){
+class Adapter(private val dataset: ArrayList<ContactInfo>,
+private val clickHandler: PostClickHandler):RecyclerView.Adapter<Adapter.ViewHolder>(){
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.fragment2,viewGroup,false)
+        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_contact,viewGroup,false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.itemView.rootView.setOnClickListener{clickHandler.clickedPosTItem(dataset[position],position)}
         viewHolder.name.text= dataset[position].name
         viewHolder.contact.text= dataset[position].contact
         viewHolder.address.text = dataset[position].address
@@ -45,7 +48,12 @@ class Adapter(private val dataset:ArrayList<ContactInfo>):RecyclerView.Adapter<A
             address = view.findViewById<TextView>(R.id.address)
             //mobile = view.findViewById<TextView>(R.id.mobile)
             //adrs = view.findViewById<TextView>(R.id.Adrs)
+           // view.setOnClickListener(this)
+
+
         }
+
+
 
 
     }

@@ -1,3 +1,8 @@
 package com.example.fragmentexample
 
-class ContactInfo (var img:Int, var name: String, var contact:String, var address:String)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class ContactInfo (var img:Int, var name: String, var contact:String, var address:String) :
+    Parcelable
